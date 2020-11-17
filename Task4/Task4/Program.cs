@@ -80,22 +80,19 @@ namespace Task_4
         public static string GetLength(int x1,int y1, int x2, int y2) // Довжина відрізка
         {
             llength = Math.Sqrt(Math.Pow(x2-x1,2)+Math.Pow(y2-y1,2));
-            string result = String.Format("{0:f1}", llength);
-            return result;
+            return String.Format("{0:f1}", llength);
         }
-        public static double GetMid(int x, int y) // Середина відрізка
+        public static void GetMid(int ax, int bx, int ay, int by, out double ma, out double mb) // Середина відрізка
         {
-            s = (x + y) / 2.0;
-            return s;
+            ma = (ax + bx) / 2.0;
+            mb = (ay + by) / 2.0;
         }
-        public static int[] GetScope(int ax, int ay, int bx, int by) // Масштабування відрізка
+        public static void GetScope(int ax, int ay, int bx, int by, out int bxs, out int bys) // Масштабування відрізка
         {
             Console.WriteLine("У скільки разів потрібно масштабувати відрізок?");
             int k = Convert.ToInt32(Console.ReadLine());
-            int bxs = bx + (bx - ax) * (k - 1);
-            int bys = by + (by - ay) * (k - 1);
-            int[] scopedb = {bxs, bys};
-            return scopedb;
+            bxs = bx + (bx - ax) * (k - 1);
+            bys = by + (by - ay) * (k - 1);
         }
         class Program
         {
@@ -126,17 +123,18 @@ namespace Task_4
                 }
                 Console.WriteLine($"A[{ax};{ay}],B[{bx};{by}]");
                 Console.WriteLine($"Довжина AB - {GetLength(ax, ay, bx, by)}");
-                Console.WriteLine($"Середина AB - [{GetMid(ax, bx)};{GetMid(ay, by)}]");
-                int[] scopedb = GetScope(ax, ay, bx, by);
-                Console.WriteLine($"Масштабований відрізок = A[{ax};{ay}], B[{scopedb[0]};{scopedb[1]}]");
+                GetMid(ax, bx, ay, by, out double ma, out double mb); // Оголошуємо вихідні змінні ma та mb
+                Console.WriteLine($"Середина AB - [{ma};{mb}]");
+                GetScope(ax, ay, bx, by, out int bxs, out int bys); // Оголошуємо вихідні змінні bxs та bys
+                Console.WriteLine($"Масштабований відрізок = A[{ax};{ay}], B[{bxs};{bys}]");
 
                 try
                 {
                     using StreamWriter sw = new StreamWriter(@"D:\Унік\ООП\task4sw.txt", false, System.Text.Encoding.Default);
                     sw.WriteLine($"A[{ax};{ay}],B[{bx};{by}]");
                     sw.WriteLine($"Довжина AB - {GetLength(ax, ay, bx, by)}");
-                    sw.WriteLine($"Середина AB - [{GetMid(ax, bx)};{GetMid(ay, by)}]");
-                    sw.WriteLine($"Масштабований відрізок = A[{ax};{ay}], B[{scopedb[0]};{scopedb[1]}]");
+                    sw.WriteLine($"Середина AB - [{ma};{mb}]");
+                    sw.WriteLine($"Масштабований відрізок = A[{ax};{ay}], B[{bxs};{bys}]");
                 }
                 catch (IOException exc)
                 {
