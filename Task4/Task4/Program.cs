@@ -143,17 +143,6 @@ namespace Task_4
                     Console.WriteLine("Помилка доступу до файлу:" + exc.Message);
                     return;
                 }
-
-
-
-
-
-
-
-
-
-
-
             }
         }       
     }
