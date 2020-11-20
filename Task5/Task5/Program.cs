@@ -37,6 +37,7 @@ namespace task5
     {
         static void Main()
         {
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
             string xt, yt;
             try // Зчитування масивів з файлу
             {
@@ -71,7 +72,14 @@ namespace task5
             }
 
             arr.Check_x(x);
-            arr.Check_z(x, y, z); // Використання методів
+            try
+            {
+                arr.Check_z(x, y, z); // Використання методів
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine($"Довжини масивів не співпадають. Перевірте коректність введених даних.\n{e.Message}");
+            }
 
             Console.WriteLine("Масив Х:");
             arr.Getarrays(x);

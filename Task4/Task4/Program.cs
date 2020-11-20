@@ -60,7 +60,6 @@ namespace Task_4
             By = yb;
         }
 
-
         public string GetLength(int x1, int y1, int x2, int y2) // Довжина відрізка
         {
             double length = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
@@ -99,9 +98,10 @@ namespace Task_4
                 Console.WriteLine("Помилка доступу до файлу:" + exc.Message);
                 return;
             }
-            Line line = new Line(int.Parse(xytxt[0].ToString()), int.Parse(xytxt[1].ToString()),
-                                int.Parse(xytxt[2].ToString()), int.Parse(xytxt[3].ToString()));
 
+            Line line = new Line(int.Parse(xytxt[0].ToString()), int.Parse(xytxt[1].ToString()), 
+                                int.Parse(xytxt[2].ToString()), int.Parse(xytxt[3].ToString()));
+            
             Console.WriteLine($"A[{line.Ax};{line.Ay}],B[{line.Bx};{line.By}]");
             Console.WriteLine($"Довжина AB - {line.GetLength(line.Ax, line.Ay, line.Bx, line.By)}");
 
