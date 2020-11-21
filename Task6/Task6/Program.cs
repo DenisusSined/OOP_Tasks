@@ -143,6 +143,7 @@ namespace Task6
             Arr massive = new Arr();
 
             massive.SetSizeN();
+
             massive.SetSizeM();
             int[,] arr = new int[massive.N, massive.M];
 
