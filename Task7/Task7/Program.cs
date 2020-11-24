@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Task6
+namespace Task7
 {
     class Ar
     {
@@ -72,7 +72,7 @@ namespace Task6
             {
                 for (int j = 0; j < m; j++)
                 {
-                    arr[i, j] = rand.Next(1, 40);
+                    arr[i, j] = rand.Next(1,40);
                     Console.Write("{0,3}", $"[{arr[i, j]}]");
                 }
                 Console.WriteLine();
