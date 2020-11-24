@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Task6
 {
@@ -46,8 +47,8 @@ namespace Task6
         public int SetSizeN()
         {
             Console.WriteLine("Введіть кількість рядків масиву:");
-            string r = Console.ReadLine();
-            if (Int32.TryParse(r, out n))
+            string l = Console.ReadLine();
+            if (Int32.TryParse(l, out n))
             {
                 return n;
             }
@@ -60,7 +61,7 @@ namespace Task6
         }
         public int SetSizeM()
         {
-            Console.WriteLine("Введіть кількість рядків масиву:");
+            Console.WriteLine("Введіть кількість стовпців масиву:");
             string c = Console.ReadLine();
             if (Int32.TryParse(c, out m))
             {
@@ -129,6 +130,33 @@ namespace Task6
             }
             return elements;
         }
+        public void GetSum(int[,] arr)
+        {
+            int max, min;
+            int[] arrsum = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                max = arr[i, 0];
+                min = arr[i, 0];
+
+                for (int j = 0; j < m; j++)
+                {
+                    if (arr[i, j] > max)
+                    {
+                        max = arr[i, j];
+                    }
+                    if (arr[i, j] < min)
+                    {
+                        min = arr[i, j];
+                    }
+                }
+                arrsum[i] = max + min;
+                Console.WriteLine($"Сума мінімального та максимального елемента в {i+1}му рядку - {arrsum[i]}");
+            }
+            
+        }
+        
+
         public void GetElement(Dictionary<int, int> elements)
         {
             int el = SetKey();
@@ -143,15 +171,15 @@ namespace Task6
             Arr massive = new Arr();
 
             massive.SetSizeN();
-
             massive.SetSizeM();
-            int[,] arr = new int[massive.N, massive.M];
 
+            int[,] arr = new int[massive.N, massive.M];
             Dictionary<int, int> elements = new Dictionary<int, int>(massive.N * massive.M);
 
             massive.ArrRandInp(arr);
             massive.ArrToDict(elements, arr);
             massive.GetElement(elements);
+            massive.GetSum(arr);
         }
     }
 }
