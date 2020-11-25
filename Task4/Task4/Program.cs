@@ -121,7 +121,7 @@ namespace Task_4
             }
             catch (IOException exc)
             {
-                Console.WriteLine("Помилка доступу до файлу:" + exc.Message);
+                Console.WriteLine("Помилка доступу до файлу: " + exc.Message);
                 return;
             }
         }
