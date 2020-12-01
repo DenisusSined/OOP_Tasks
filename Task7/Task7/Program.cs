@@ -24,7 +24,7 @@ namespace Task7
             {
                 Console.WriteLine("Помилка доступу до файлу: " + exc.Message);
             }
-            file_list = file_str.Split(' ').Select(file_str => Convert.ToInt32(file_str)).ToList();
+            file_list = new List<int>(file_str.Split(' ').Select(int.Parse));
             return file_list;
         }
         static void Main()
